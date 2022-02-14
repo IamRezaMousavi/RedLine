@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-14 09:11:30
+# @Last Modified time: 2022-02-14 09:16:49
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -147,6 +147,20 @@ class Main(QMainWindow):
         self.ui.songList.setCurrentRow(index - 1)
         self.ui.playButton.setText("Play")
         self.playMusic()
+    
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
 
 def main():
     app = QApplication(sys.argv)
