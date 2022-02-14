@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-14 09:04:40
+# @Last Modified time: 2022-02-14 09:11:30
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -30,7 +30,6 @@ class Main(QMainWindow):
                                 background-color: rgba(0, 0, 0, 200);
                             }
                             """)
-        self.ui.bodyFrame.setMaximumHeight(0)
         
         self.ui.backwardButton.setIcon(self.style().standardIcon(QStyle.SP_MediaSeekBackward))
         self.ui.backwardButton.clicked.connect(self.changeSize)
