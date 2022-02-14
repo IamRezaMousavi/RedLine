@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-14 08:59:39
+# @Last Modified time: 2022-02-14 09:04:40
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -25,7 +25,7 @@ class Main(QMainWindow):
     def initUi(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.ui.windowFrame.setStyleSheet("""QFrame
+        self.ui.windowFrame.setStyleSheet("""QFrame#windowFrame
                             {
                                 background-color: rgba(0, 0, 0, 200);
                             }
