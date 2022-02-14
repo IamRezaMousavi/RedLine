@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-14 08:23:06
+# @Last Modified time: 2022-02-14 08:59:39
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -23,12 +23,13 @@ class Main(QMainWindow):
         self.initUi()
     
     def initUi(self):
-        self.setStyleSheet("""QMainWindow
-                           {
-                               background-color: gray;
-                           }
-                           """)
-        
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.ui.windowFrame.setStyleSheet("""QFrame
+                            {
+                                background-color: rgba(0, 0, 0, 200);
+                            }
+                            """)
         self.ui.bodyFrame.setMaximumHeight(0)
         
         self.ui.backwardButton.setIcon(self.style().standardIcon(QStyle.SP_MediaSeekBackward))
@@ -65,9 +66,24 @@ class Main(QMainWindow):
         maxHeightAnimation.setStartValue(height)
         maxHeightAnimation.setEndValue(newHeight)
         
+        windowHeight = self.ui.windowFrame.height()
+        newWindowHeight = 114 if height else newHeight + 114
+        
+        minWindowAnimation = QPropertyAnimation(self.ui.windowFrame, b"minimumHeight")
+        minWindowAnimation.setDuration(600)
+        minWindowAnimation.setStartValue(windowHeight)
+        minWindowAnimation.setEndValue(newWindowHeight)
+        
+        maxWindowAnimation = QPropertyAnimation(self.ui.windowFrame, b"maximumHeight")
+        maxWindowAnimation.setDuration(600)
+        maxWindowAnimation.setStartValue(windowHeight)
+        maxWindowAnimation.setEndValue(newWindowHeight)
+        
         self.animation = QParallelAnimationGroup()
         self.animation.addAnimation(minHeightAnimation)
         self.animation.addAnimation(maxHeightAnimation)
+        self.animation.addAnimation(maxWindowAnimation)
+        self.animation.addAnimation(minWindowAnimation)
         self.animation.start()
     
     def openFile(self):
