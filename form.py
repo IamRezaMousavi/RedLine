@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-14 09:16:49
+# @Last Modified time: 2022-02-15 05:49:15
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -84,6 +84,7 @@ class Main(QMainWindow):
         self.animation.addAnimation(maxWindowAnimation)
         self.animation.addAnimation(minWindowAnimation)
         self.animation.start()
+        self.setFocus(True)
     
     def openFile(self):
         fileName = QFileDialog()
@@ -91,16 +92,18 @@ class Main(QMainWindow):
         names = fileName.getOpenFileNames(self,
                                           "Open Files",
                                           os.path.expanduser("~"),
-                                          "Audio Files (*.mp3 *.wav *.ogg)")
+                                          "Audio Files (*.mp3 *.wav *.ogg)") #MP3, FLAC, M4A, AAC, OGG, 3GP, AMR, APE, MKA, Opus, Wavpack, Musepack
         if not names[0]:
             return
         self.ui.songList.addItems(names[0])
         self.ui.songList.setCurrentRow(0)
         self.ui.playButton.setEnabled(True)
         self.changeSize()
+        self.setFocus(True)
     
     def playMusic(self):
-        if self.playButton.text() == "Play":
+        self.setFocus(True)
+        if self.ui.playButton.text() == "Play":
             path = self.songList.currentItem().text()
             url = QUrl.fromLocalFile(path)
             content = QMediaContent(url)
@@ -137,16 +140,22 @@ class Main(QMainWindow):
     def forwardMusic(self):
         index = self.songList.currentRow()
         index = index if index < self.songList.count()-1 else -1
-        self.ui.songList.setCurrentRow(index + 1)
-        self.ui.playButton.setText("Play")
-        self.playMusic()
+        try:
+            self.ui.songList.setCurrentRow(index + 1)
+            self.ui.playButton.setText("Play")
+            self.playMusic()
+        except:
+            self.setFocus(True)
     
     def backwardMusic(self):
         index = self.songList.currentRow()
         index = index if index > 0 else self.songList.count()
-        self.ui.songList.setCurrentRow(index - 1)
-        self.ui.playButton.setText("Play")
-        self.playMusic()
+        try:
+            self.ui.songList.setCurrentRow(index - 1)
+            self.ui.playButton.setText("Play")
+            self.playMusic()
+        except:
+            self.setFocus(True)
     
     def center(self):
         qr = self.frameGeometry()
@@ -161,6 +170,27 @@ class Main(QMainWindow):
         delta = QPoint (event.globalPos() - self.oldPos)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
+    
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Down:
+            print("DOWN")
+            volume = self.player.volume()
+            self.player.setVolume(volume - 5)
+        elif event.key() == Qt.Key_Up:
+            print("UP")
+            volume = self.player.volume()
+            self.player.setVolume(volume + 5)
+        elif event.key() == Qt.Key_Right:
+            self.position = self.player.position()
+            self.player.setPosition(self.position + 5000)
+        elif event.key() == Qt.Key_Left:
+            self.position = self.player.position()
+            self.player.setPosition(self.position - 5000)
+        elif event.key() == Qt.Key_Space:
+            self.playMusic()
+        elif event.key() in [Qt.Key_Return, Qt.Key_Enter]:
+            self.close()
+            print("Enter")
 
 def main():
     app = QApplication(sys.argv)
