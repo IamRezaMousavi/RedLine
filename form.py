@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-15 05:49:15
+# @Last Modified time: 2022-02-15 06:39:19
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -25,11 +25,6 @@ class Main(QMainWindow):
     def initUi(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.ui.windowFrame.setStyleSheet("""QFrame#windowFrame
-                            {
-                                background-color: rgba(0, 0, 0, 200);
-                            }
-                            """)
         
         self.ui.backwardButton.setIcon(self.style().standardIcon(QStyle.SP_MediaSeekBackward))
         self.ui.backwardButton.clicked.connect(self.changeSize)
@@ -92,7 +87,7 @@ class Main(QMainWindow):
         names = fileName.getOpenFileNames(self,
                                           "Open Files",
                                           os.path.expanduser("~"),
-                                          "Audio Files (*.mp3 *.wav *.ogg)") #MP3, FLAC, M4A, AAC, OGG, 3GP, AMR, APE, MKA, Opus, Wavpack, Musepack
+                                          "Audio Files (*.mp3 *.wav *.ogg *.aac *.3gp *.amr *.flac, *.m4a, *.amr, *.ape, *.mka, *.opus, *.wavpack, *.musepack)")
         if not names[0]:
             return
         self.ui.songList.addItems(names[0])
