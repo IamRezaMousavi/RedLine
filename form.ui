@@ -38,8 +38,8 @@
     <property name="styleSheet">
      <string notr="true">QFrame#windowFrame
 {
-    background-color: rgba(0, 0, 0, 220);
-	border: none;
+    background-color: rgba(0, 0, 0, 210);
+	border: 1px solid rgba(40, 0, 0, 230);
 }
 </string>
     </property>
@@ -131,7 +131,7 @@
 {
 	height: 20px;
 	border-radius: 10px;
-	border: 1px solid rgb(187, 0, 14);
+	border: 1px solid rgb(227, 0, 14);
 	color: white;
 }
 QPushButton#playButton:hover
@@ -190,6 +190,10 @@ QPushButton#playButton:disabled
 	color: rgb(120, 0, 0);
 	background: none;
 	font: 14px;
+}
+QPushButton#moreButton:hover
+{
+	color: rgb(255, 50, 50);
 }
 </string>
            </property>
@@ -350,6 +354,10 @@ QSlider::handle:horizontal:pressed
 	background: none;
 	font: 14px;
 }
+QPushButton#lessButton:hover
+{
+	color: rgb(50, 50, 255);
+}
 </string>
          </property>
          <property name="text">
@@ -366,11 +374,12 @@ QSlider::handle:horizontal:pressed
 	width: 40px;
 	border: none;
 	background: none;
+	color: white;
 }
 </string>
          </property>
          <property name="text">
-          <string/>
+          <string>Open Files</string>
          </property>
         </widget>
        </item>
@@ -385,6 +394,10 @@ QSlider::handle:horizontal:pressed
 	color: rgb(120, 120, 120);
 	background: none;
 	font: 14px;
+}
+QPushButton#aboutButton:hover
+{
+	color: rgb(255, 255, 255);
 }
 </string>
          </property>
