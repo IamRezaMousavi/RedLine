@@ -20,7 +20,7 @@
       <x>0</x>
       <y>0</y>
       <width>291</width>
-      <height>91</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -32,7 +32,7 @@
     <property name="maximumSize">
      <size>
       <width>16777215</width>
-      <height>91</height>
+      <height>128</height>
      </size>
     </property>
     <property name="styleSheet">
@@ -55,8 +55,14 @@
        <x>0</x>
        <y>0</y>
        <width>291</width>
-       <height>91</height>
+       <height>111</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -69,19 +75,19 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <item>
        <widget class="QFrame" name="playFrame">
@@ -243,13 +249,59 @@ QSlider::handle:horizontal:pressed
         </layout>
        </widget>
       </item>
+      <item>
+       <widget class="QFrame" name="feedbackFrame">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>10</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="feedbackLabel">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Volume is 15</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </widget>
     <widget class="QFrame" name="bodyFrame">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>91</y>
+       <y>111</y>
        <width>291</width>
        <height>0</height>
       </rect>
@@ -275,9 +327,9 @@ QSlider::handle:horizontal:pressed
      <widget class="QFrame" name="songListFrame">
       <property name="geometry">
        <rect>
-        <x>5</x>
+        <x>2</x>
         <y>0</y>
-        <width>281</width>
+        <width>286</width>
         <height>291</height>
        </rect>
       </property>
