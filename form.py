@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 21:19:55
+# @Last Modified time: 2022-02-16 21:53:54
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -26,6 +26,7 @@ class Main(QMainWindow):
     
     def initUi(self):
         self.setWindowTitle("Musicing")
+        self.setWindowIcon(QIcon("./files/windowIcon.png"))
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         
@@ -182,6 +183,7 @@ class Main(QMainWindow):
                                   color: white;
                               }
                               """)
+        message.setWindowIcon(QIcon("./files/windowIcon.png"))
         message.setWindowTitle("About")
         message.setText("Created by")
         message.setInformativeText("@IamRezaMousavi")
