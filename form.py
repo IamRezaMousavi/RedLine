@@ -2,13 +2,13 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 21:53:54
+# @Last Modified time: 2022-02-16 22:02:27
 
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog,
+                             QDesktopWidget, QMessageBox, QShortcut)
+from PyQt5.QtCore import QPoint, QPropertyAnimation, QParallelAnimationGroup, QSize
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtGui import QIcon, QKeySequence
 from PyQt5.QtCore import Qt, QUrl
 from PyQt5 import uic
 import sys
@@ -103,7 +103,12 @@ class Main(QMainWindow):
         names = fileName.getOpenFileNames(self,
                                           "Open Files",
                                           os.path.expanduser("~"),
-                                          "Audio Files (*.mp3 *.wav *.ogg *.aac *.3gp *.amr *.flac, *.m4a, *.amr, *.ape, *.mka, *.opus, *.wavpack, *.musepack)")
+                                          """
+                                          Audio Files (*.mp3 *.wav *.ogg *.aac
+                                          *.3gp *.amr *.flac *.m4a *.amr *.ape
+                                          *.mka *.opus *.wavpack *.musepack)
+                                          """
+                                          )
         if not names[0]:
             return
         self.ui.songList.addItems(names[0])
