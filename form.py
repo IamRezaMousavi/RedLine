@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 12:29:00
+# @Last Modified time: 2022-02-16 17:14:55
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -27,26 +27,28 @@ class Main(QMainWindow):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         
-        self.ui.backwardButton.setIcon(self.style().standardIcon(QStyle.SP_MediaSeekBackward))
+        self.ui.backwardButton.setIcon(QIcon("./files/backwardIcon.png"))
         self.ui.backwardButton.clicked.connect(self.backwardMusic)
         self.ui.playButton.setEnabled(False)
-        self.ui.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+        self.ui.playButton.setIcon(QIcon("./files/whitePlayIcon.png"))
+        self.ui.playButton.setIconSize(QSize(14, 14))
         self.ui.playButton.clicked.connect(self.playMusic)
-        self.ui.forwardButton.setIcon(self.style().standardIcon(QStyle.SP_MediaSeekForward))
+        self.ui.forwardButton.setIcon(QIcon("./files/forwardIcon.png"))
         self.ui.forwardButton.clicked.connect(self.forwardMusic)
+        
+        self.ui.songSlider.setRange(0, 0)
+        self.ui.songSlider.sliderMoved.connect(self.setPosition)
         
         self.ui.moreButton.clicked.connect(self.changeSize)
         self.ui.lessButton.clicked.connect(self.changeSize)
         
         self.ui.openButton.setIcon(self.style().standardIcon(QStyle.SP_DirOpenIcon))
         self.ui.openButton.clicked.connect(self.openFile)
-        self.ui.songSlider.setRange(0, 0)
-        self.ui.songSlider.sliderMoved.connect(self.setPosition)
         
         self.player = QMediaPlayer()
-        
         self.player.positionChanged.connect(self.positionChanged)
         self.player.durationChanged.connect(self.durationChanged)
+        
         self.ui.songList.clicked.connect(self.setState)
         self.ui.songList.doubleClicked.connect(self.playMusic)
     
@@ -111,12 +113,12 @@ class Main(QMainWindow):
             self.player.play()
             self.song = path
             self.ui.playButton.setText("Pause")
-            self.ui.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPause))
+            self.ui.playButton.setIcon(QIcon("./files/pauseIcon.png"))
         else:
             self.player.pause()
             self.position = self.player.position()
             self.ui.playButton.setText("Play")
-            self.ui.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+            self.ui.playButton.setIcon(QIcon("./files/whitePlayIcon.png"))
     
     def setPosition(self, position):
         self.player.setPosition(position)
