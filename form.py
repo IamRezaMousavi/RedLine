@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 18:55:06
+# @Last Modified time: 2022-02-16 20:26:29
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -107,6 +107,7 @@ class Main(QMainWindow):
         self.ui.songList.addItems(names[0])
         self.ui.songList.setCurrentRow(0)
         self.ui.playButton.setEnabled(True)
+        self.ui.feedbackLabel.setText("Open File(s)")
         self.setFocus(True)
     
     def playMusic(self):
@@ -122,11 +123,13 @@ class Main(QMainWindow):
             self.song = path
             self.ui.playButton.setText("Pause")
             self.ui.playButton.setIcon(QIcon("./files/pauseIcon.png"))
+            self.ui.feedbackLabel.setText("Play...")
         else:
             self.player.pause()
             self.position = self.player.position()
             self.ui.playButton.setText("Play")
             self.ui.playButton.setIcon(QIcon("./files/whitePlayIcon.png"))
+            self.ui.feedbackLabel.setText("Pause")
     
     def setPosition(self, position):
         self.player.setPosition(position)
@@ -154,6 +157,7 @@ class Main(QMainWindow):
             self.playMusic()
         except:
             self.setFocus(True)
+        self.ui.feedbackLabel.setText("Play Forward Music")
     
     def backwardMusic(self):
         index = self.songList.currentRow()
@@ -164,6 +168,7 @@ class Main(QMainWindow):
             self.playMusic()
         except:
             self.setFocus(True)
+        self.ui.feedbackLabel.setText("Play Backward Music")
     
     def center(self):
         qr = self.frameGeometry()
@@ -182,18 +187,29 @@ class Main(QMainWindow):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Down:
             volume = self.player.volume()
-            self.player.setVolume(volume - 5)
+            newVolume = volume - 5
+            self.player.setVolume(newVolume)
+            self.ui.feedbackLabel.setText("Volume Down: " + str(newVolume if newVolume >= 0 else 0))
+        
         elif event.key() == Qt.Key_Up:
             volume = self.player.volume()
-            self.player.setVolume(volume + 5)
+            newVolume = volume + 5
+            self.player.setVolume(newVolume)
+            self.ui.feedbackLabel.setText("Volume Up: " + str(newVolume if newVolume <= 100 else 100))
+        
         elif event.key() == Qt.Key_Right:
             self.position = self.player.position()
             self.player.setPosition(self.position + 5000)
+            self.ui.feedbackLabel.setText("Go to +5 sec")
+        
         elif event.key() == Qt.Key_Left:
             self.position = self.player.position()
             self.player.setPosition(self.position - 5000)
+            self.ui.feedbackLabel.setText("Go to -5 sec")
+        
         elif event.key() == Qt.Key_Space:
             self.playMusic()
+        
         elif event.key() in [Qt.Key_Return, Qt.Key_Enter]:
             self.close()
 
