@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 11:53:07
+# @Last Modified time: 2022-02-16 12:29:00
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -97,7 +97,6 @@ class Main(QMainWindow):
         self.ui.songList.addItems(names[0])
         self.ui.songList.setCurrentRow(0)
         self.ui.playButton.setEnabled(True)
-        self.changeSize()
         self.setFocus(True)
     
     def playMusic(self):

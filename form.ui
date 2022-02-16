@@ -39,7 +39,7 @@
      <string notr="true">QFrame#windowFrame
 {
     background-color: rgba(0, 0, 0, 210);
-	border: 1px solid rgba(40, 0, 0, 230);
+	border: 1px solid rgba(120, 0, 0, 230);
 }
 </string>
     </property>
@@ -214,7 +214,7 @@ QSlider::groove:horizontal
 	border-radius: 5px;
 	height: 10px;
 	margin: 0px;
-	background-color: rgb(52, 58, 58);
+	background-color: rgb(102, 108, 108);
 }
 QSlider::handle:horizontal
 {
@@ -374,9 +374,14 @@ QPushButton#lessButton:hover
 	width: 40px;
 	border: none;
 	background: none;
-	color: white;
+	color: rgb(210, 210, 210);
+	font: 11px;
 }
-</string>
+QPushButton#openButton:hover
+{
+	color: white;
+	font: 12px;
+}</string>
          </property>
          <property name="text">
           <string>Open Files</string>
