@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 18:16:20
+# @Last Modified time: 2022-02-16 18:55:06
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -53,6 +53,8 @@ class Main(QMainWindow):
         
         self.ui.songList.clicked.connect(self.setState)
         self.ui.songList.doubleClicked.connect(self.playMusic)
+        
+        self.ui.feedbackLabel.setText("Start Program")
     
     def addShurtcut(self):
         self.openShortcut = QShortcut(QKeySequence("Ctrl+O"), self)
@@ -60,7 +62,7 @@ class Main(QMainWindow):
     
     def changeSize(self):
         height = self.ui.bodyFrame.height()
-        newHeight = 0 if height == 331 else 331
+        newHeight = 0 if height == 332 else 332
         
         minHeightAnimation = QPropertyAnimation(self.ui.bodyFrame, b"minimumHeight")
         minHeightAnimation.setDuration(600)
@@ -73,7 +75,7 @@ class Main(QMainWindow):
         maxHeightAnimation.setEndValue(newHeight)
         
         windowHeight = self.ui.windowFrame.height()
-        newWindowHeight = 91 if height else newHeight + 91
+        newWindowHeight = 111 if height else newHeight + 111
         
         minWindowAnimation = QPropertyAnimation(self.ui.windowFrame, b"minimumHeight")
         minWindowAnimation.setDuration(600)
