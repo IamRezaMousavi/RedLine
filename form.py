@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 20:26:29
+# @Last Modified time: 2022-02-16 21:19:55
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -46,6 +46,7 @@ class Main(QMainWindow):
         
         self.ui.openButton.setIcon(self.style().standardIcon(QStyle.SP_DirOpenIcon))
         self.ui.openButton.clicked.connect(self.openFile)
+        self.ui.aboutButton.clicked.connect(self.showAboutMessage)
         
         self.player = QMediaPlayer()
         self.player.positionChanged.connect(self.positionChanged)
@@ -169,6 +170,25 @@ class Main(QMainWindow):
         except:
             self.setFocus(True)
         self.ui.feedbackLabel.setText("Play Backward Music")
+    
+    def showAboutMessage(self):
+        message = QMessageBox()
+        message.setStyleSheet("""QMessageBox
+                              {
+                                  background-color: rgb(19, 19, 19);
+                              }
+                              QMessageBox QLabel
+                              {
+                                  color: white;
+                              }
+                              """)
+        message.setWindowTitle("About")
+        message.setText("Created by")
+        message.setInformativeText("@IamRezaMousavi")
+        message.setDetailedText("Meet me at\nGithub.com/IamRezaMousavi")
+        message.exec()
+        
+        
     
     def center(self):
         qr = self.frameGeometry()
