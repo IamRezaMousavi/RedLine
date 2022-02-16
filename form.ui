@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>308</width>
-    <height>463</height>
+    <width>293</width>
+    <height>423</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,28 +17,29 @@
    <widget class="QFrame" name="windowFrame">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>9</y>
+      <x>0</x>
+      <y>0</y>
       <width>291</width>
-      <height>114</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
       <width>0</width>
-      <height>114</height>
+      <height>0</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
       <width>16777215</width>
-      <height>114</height>
+      <height>91</height>
      </size>
     </property>
     <property name="styleSheet">
      <string notr="true">QFrame#windowFrame
 {
-    background-color: rgba(0, 0, 0, 200);
+    background-color: rgba(0, 0, 0, 220);
+	border: none;
 }
 </string>
     </property>
@@ -52,10 +53,13 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>10</y>
-       <width>281</width>
-       <height>108</height>
+       <y>0</y>
+       <width>291</width>
+       <height>91</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -64,6 +68,21 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
        <widget class="QFrame" name="playFrame">
         <property name="frameShape">
@@ -73,8 +92,33 @@
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
+         <property name="topMargin">
+          <number>6</number>
+         </property>
+         <property name="rightMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
+          <number>6</number>
+         </property>
          <item>
           <widget class="QPushButton" name="backwardButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton#backwardButton
+{
+	height: 20px;
+	border: none;
+	background: none;
+	color: red
+}
+</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -82,6 +126,25 @@
          </item>
          <item>
           <widget class="QPushButton" name="playButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton#playButton
+{
+	height: 20px;
+	border-radius: 10px;
+	border: 1px solid rgb(187, 0, 14);
+	color: white;
+}
+QPushButton#playButton:hover
+{
+	background-color: rgb(16, 0, 0);
+}
+QPushButton#playButton:disabled
+{
+	border: 1px solid rgb(67, 0, 0);
+	color: gray;
+}
+</string>
+           </property>
            <property name="text">
             <string>Play</string>
            </property>
@@ -89,6 +152,16 @@
          </item>
          <item>
           <widget class="QPushButton" name="forwardButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton#forwardButton
+{
+	height: 20px;
+	border: none;
+	background: none;
+	color: red
+}
+</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -107,9 +180,21 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QPushButton" name="openButton">
+          <widget class="QPushButton" name="moreButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton#moreButton
+{
+	height: 20px;
+	width: 40px;
+	border: none;
+	color: rgb(120, 0, 0);
+	background: none;
+	font: 14px;
+}
+</string>
+           </property>
            <property name="text">
-            <string/>
+            <string>More</string>
            </property>
           </widget>
          </item>
@@ -125,11 +210,7 @@ QSlider::groove:horizontal
 	border-radius: 5px;
 	height: 10px;
 	margin: 0px;
-	background-color: rgb(52, 59, 72);
-}
-QSlider::groove:horizontal:hover
-{
-	background-color: rgb(42, 49, 62);
+	background-color: rgb(52, 58, 58);
 }
 QSlider::handle:horizontal
 {
@@ -138,11 +219,11 @@ QSlider::handle:horizontal
     width: 10px;
     margin: 0px;
     border-radius: 5px;
-    background-color: rgb(189, 147, 249);
+    background-color: rgb(160, 10, 10);
 }
 QSlider::handle:horizontal:hover
 {
-    background-color: rgb(199, 157, 255);
+    background-color: rgb(220, 40, 40);
 }
 QSlider::handle:horizontal:pressed
 {
@@ -164,8 +245,8 @@ QSlider::handle:horizontal:pressed
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>120</y>
-       <width>281</width>
+       <y>91</y>
+       <width>291</width>
        <height>0</height>
       </rect>
      </property>
@@ -187,29 +268,133 @@ QSlider::handle:horizontal:pressed
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QFrame" name="songListFrame">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>291</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QListWidget" name="songList"/>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QFrame" name="songListFrame">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>0</y>
+        <width>281</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <property name="leftMargin">
+        <number>6</number>
+       </property>
+       <property name="topMargin">
+        <number>6</number>
+       </property>
+       <property name="rightMargin">
+        <number>6</number>
+       </property>
+       <property name="bottomMargin">
+        <number>6</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QListWidget" name="songList"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>289</y>
+        <width>291</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="leftMargin">
+        <number>6</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>6</number>
+       </property>
+       <property name="bottomMargin">
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="lessButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#lessButton
+{
+	height: 20px;
+	width: 40px;
+	border: none;
+	color: rgb(0, 0, 120);
+	background: none;
+	font: 14px;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Less</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="openButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#openButton
+{
+	height: 20px;
+	width: 40px;
+	border: none;
+	background: none;
+}
+</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="aboutButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#aboutButton
+{
+	height: 20px;
+	width: 40px;
+	border: none;
+	color: rgb(120, 120, 120);
+	background: none;
+	font: 14px;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>About</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>

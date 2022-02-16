@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-15 06:39:19
+# @Last Modified time: 2022-02-16 11:53:07
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -21,18 +21,22 @@ class Main(QMainWindow):
         self.position = 0
         self.ui = uic.loadUi("form.ui", self)
         self.initUi()
+        self.oldPos = QPoint()
     
     def initUi(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         
         self.ui.backwardButton.setIcon(self.style().standardIcon(QStyle.SP_MediaSeekBackward))
-        self.ui.backwardButton.clicked.connect(self.changeSize)
+        self.ui.backwardButton.clicked.connect(self.backwardMusic)
         self.ui.playButton.setEnabled(False)
         self.ui.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
         self.ui.playButton.clicked.connect(self.playMusic)
         self.ui.forwardButton.setIcon(self.style().standardIcon(QStyle.SP_MediaSeekForward))
         self.ui.forwardButton.clicked.connect(self.forwardMusic)
+        
+        self.ui.moreButton.clicked.connect(self.changeSize)
+        self.ui.lessButton.clicked.connect(self.changeSize)
         
         self.ui.openButton.setIcon(self.style().standardIcon(QStyle.SP_DirOpenIcon))
         self.ui.openButton.clicked.connect(self.openFile)
@@ -61,7 +65,7 @@ class Main(QMainWindow):
         maxHeightAnimation.setEndValue(newHeight)
         
         windowHeight = self.ui.windowFrame.height()
-        newWindowHeight = 114 if height else newHeight + 114
+        newWindowHeight = 91 if height else newHeight + 91
         
         minWindowAnimation = QPropertyAnimation(self.ui.windowFrame, b"minimumHeight")
         minWindowAnimation.setDuration(600)
@@ -162,17 +166,15 @@ class Main(QMainWindow):
         self.oldPos = event.globalPos()
 
     def mouseMoveEvent(self, event):
-        delta = QPoint (event.globalPos() - self.oldPos)
+        delta = QPoint(event.globalPos() - self.oldPos)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
     
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Down:
-            print("DOWN")
             volume = self.player.volume()
             self.player.setVolume(volume - 5)
         elif event.key() == Qt.Key_Up:
-            print("UP")
             volume = self.player.volume()
             self.player.setVolume(volume + 5)
         elif event.key() == Qt.Key_Right:
@@ -185,7 +187,6 @@ class Main(QMainWindow):
             self.playMusic()
         elif event.key() in [Qt.Key_Return, Qt.Key_Enter]:
             self.close()
-            print("Enter")
 
 def main():
     app = QApplication(sys.argv)
