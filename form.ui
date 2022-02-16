@@ -310,7 +310,17 @@ QSlider::handle:horizontal:pressed
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <widget class="QListWidget" name="songList"/>
+        <widget class="QListWidget" name="songList">
+         <property name="styleSheet">
+          <string notr="true">QListWidget
+{
+	border: 1px solid rgb(120, 0, 0);
+	color: white;
+	background-color: rgba(0, 0, 0, 200);
+}
+</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
