@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 17:14:55
+# @Last Modified time: 2022-02-16 18:16:20
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog)
 from PyQt5.QtWidgets import *
@@ -21,9 +21,11 @@ class Main(QMainWindow):
         self.position = 0
         self.ui = uic.loadUi("form.ui", self)
         self.initUi()
+        self.addShurtcut()
         self.oldPos = QPoint()
     
     def initUi(self):
+        self.setWindowTitle("Musicing")
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         
@@ -51,6 +53,10 @@ class Main(QMainWindow):
         
         self.ui.songList.clicked.connect(self.setState)
         self.ui.songList.doubleClicked.connect(self.playMusic)
+    
+    def addShurtcut(self):
+        self.openShortcut = QShortcut(QKeySequence("Ctrl+O"), self)
+        self.openShortcut.activated.connect(self.openFile)
     
     def changeSize(self):
         height = self.ui.bodyFrame.height()
@@ -135,7 +141,7 @@ class Main(QMainWindow):
     def setState(self):
         self.ui.playButton.setEnabled(True)
         self.ui.playButton.setText("Play")
-        self.ui.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+        self.ui.playButton.setIcon(QIcon("./files/whitePlayIcon.png"))
     
     def forwardMusic(self):
         index = self.songList.currentRow()
