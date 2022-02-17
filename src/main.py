@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-17 15:38:38
+# @Last Modified time: 2022-02-17 18:58:41
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog,
                              QDesktopWidget, QMessageBox, QShortcut)
@@ -25,7 +25,7 @@ class Main(QMainWindow):
         self.oldPos = QPoint()
     
     def initUi(self):
-        self.setWindowTitle("Musicing")
+        self.setWindowTitle("RedLine")
         self.setWindowIcon(QIcon("./files/windowIcon.png"))
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
