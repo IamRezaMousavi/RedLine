@@ -2,7 +2,7 @@
 # @Author: @IamRezaMousavi
 # @Date:   2022-02-14 06:20:06
 # @Last Modified by:   @IamRezaMousavi
-# @Last Modified time: 2022-02-16 22:02:27
+# @Last Modified time: 2022-02-17 15:38:38
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QStyle, QFileDialog,
                              QDesktopWidget, QMessageBox, QShortcut)
@@ -19,7 +19,7 @@ class Main(QMainWindow):
         super(Main, self).__init__()
         self.song = ""
         self.position = 0
-        self.ui = uic.loadUi("form.ui", self)
+        self.ui = uic.loadUi("main.ui", self)
         self.initUi()
         self.addShurtcut()
         self.oldPos = QPoint()
@@ -120,7 +120,7 @@ class Main(QMainWindow):
     def playMusic(self):
         self.setFocus(True)
         if self.ui.playButton.text() == "Play":
-            path = self.songList.currentItem().text()
+            path = self.ui.songList.currentItem().text()
             url = QUrl.fromLocalFile(path)
             content = QMediaContent(url)
             self.player.setMedia(content)
@@ -156,8 +156,8 @@ class Main(QMainWindow):
         self.ui.playButton.setIcon(QIcon("./files/whitePlayIcon.png"))
     
     def forwardMusic(self):
-        index = self.songList.currentRow()
-        index = index if index < self.songList.count()-1 else -1
+        index = self.ui.songList.currentRow()
+        index = index if index < self.ui.songList.count()-1 else -1
         try:
             self.ui.songList.setCurrentRow(index + 1)
             self.ui.playButton.setText("Play")
@@ -167,8 +167,8 @@ class Main(QMainWindow):
         self.ui.feedbackLabel.setText("Play Forward Music")
     
     def backwardMusic(self):
-        index = self.songList.currentRow()
-        index = index if index > 0 else self.songList.count()
+        index = self.ui.songList.currentRow()
+        index = index if index > 0 else self.ui.songList.count()
         try:
             self.ui.songList.setCurrentRow(index - 1)
             self.ui.playButton.setText("Play")
