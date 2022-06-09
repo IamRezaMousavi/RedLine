@@ -16,7 +16,6 @@
 * [Setup Windows](#setup-windows)
 * [Setup Linux](#setup-linux)
 * [Usage](#usage)
-* [Download](#download)
 * [Note](#note)
 
 ___
@@ -81,12 +80,6 @@ ___
 سر بزنید
 
 </div>
-
-___
-## Download
-To download executable file:
-
-* For Windows 7 or later [Click Here](https://drive.google.com/file/d/1-z2axooUYpys7c66ELHPzjdt8GkLcqh-/view?usp=sharing)
 
 ____
 ## Note
